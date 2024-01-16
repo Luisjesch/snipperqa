@@ -3,12 +3,9 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 
 import os
-import streamlit as st
-from streamlit_chat import message
 import random
 import json
 import time
-import asyncio
 from datetime import datetime
 
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
