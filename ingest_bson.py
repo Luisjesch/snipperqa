@@ -29,7 +29,10 @@ def loadcreds(creds_filepath):
                 cred_login, cred_pass = cred.split('|')
                 cred_dict[cred_id]={"u":cred_login,"p":cred_pass}
         return cred_dict
-        
+
+if not os.path.isfile("creds.txt"):
+    print('NO CREDS FILE!')
+    exit()
 loginlist = loadcreds("creds.txt")
 
 lastcnt = 0
@@ -45,7 +48,23 @@ tropecat=tropecat.replace("_"," ")
 
 lastconvo={}
 
+if not os.path.isdir("raws"):
+    os.mkdir("raws")
+
+if not os.path.isdir("indexes"):
+    os.mkdir("indexes")
+
+if not os.path.isdir("logs"):
+    os.mkdir("logs")
+
+if not os.path.isdir("cookies_snapshot"):
+    os.mkdir("cookies_snapshot")
+
+if not os.path.isdir("done"):
+    os.mkdir("done")
+
 ps = list(Path("raws/%s/"%foldername).glob("**/*.txt"))
+
 
 if os.path.isfile("bson_processed.txt"):
     with open("bson_processed.txt", "r") as pd:
